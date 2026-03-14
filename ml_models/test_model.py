@@ -1,6 +1,7 @@
 import joblib
 import pandas as pd
 
+# load trained model
 model = joblib.load("admission_model.pkl")
 
 sample = pd.DataFrame([{
@@ -18,4 +19,7 @@ sample = pd.DataFrame([{
 
 prediction = model.predict(sample)
 
+probability = model.predict_proba(sample)[0][1]
+
 print("Prediction:", prediction)
+print("Admission Probability:", probability)
