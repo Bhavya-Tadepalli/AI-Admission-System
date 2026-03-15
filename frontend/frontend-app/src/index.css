@@ -1,0 +1,21 @@
+/* Reset page spacing */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+/* Full page layout */
+
+html,body,#root{
+height:100%;
+width:100%;
+}
+
+/* Background */
+
+body{
+font-family:'Segoe UI', sans-serif;
+background:linear-gradient(135deg,#eef2ff,#f8fbff);
+}

@@ -1,0 +1,64 @@
+/* Page background */
+
+.upload-container{
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+background:#f4f6fb;
+}
+
+/* Upload card */
+
+.upload-box{
+background:white;
+padding:40px;
+border-radius:12px;
+width:380px;
+box-shadow:0 8px 20px rgba(0,0,0,0.1);
+text-align:center;
+}
+
+/* Title */
+
+.upload-box h2{
+color:#3a6cf4;
+margin-bottom:20px;
+}
+
+/* Input fields */
+
+.upload-field{
+margin-bottom:18px;
+text-align:left;
+}
+
+.upload-field label{
+font-weight:600;
+display:block;
+margin-bottom:6px;
+}
+
+.upload-field input{
+width:100%;
+padding:8px;
+border:1px solid #ccc;
+border-radius:6px;
+}
+
+/* Button */
+
+.upload-btn{
+width:100%;
+padding:12px;
+background:#f43a3a;
+color:white;
+border:none;
+border-radius:6px;
+font-size:15px;
+cursor:pointer;
+}
+
+.upload-btn:hover{
+background:#2e55c7;
+}

@@ -1,0 +1,74 @@
+.apply-container{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:#6c63ff;
+font-family:Arial;
+}
+
+.apply-box{
+background:white;
+padding:40px;
+border-radius:12px;
+text-align:center;
+width:400px;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+.apply-box h1{
+margin-bottom:10px;
+}
+
+.apply-box button{
+margin-top:20px;
+padding:10px 20px;
+border:none;
+border-radius:6px;
+background:#6c63ff;
+color:white;
+font-weight:bold;
+cursor:pointer;
+}
+
+.form-box{
+background:white;
+padding:40px;
+border-radius:12px;
+width:450px;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+.form-box h2{
+text-align:center;
+margin-bottom:20px;
+}
+
+form{
+display:flex;
+flex-direction:column;
+}
+
+form input,
+form textarea,
+form select{
+margin-bottom:12px;
+padding:10px;
+border-radius:6px;
+border:1px solid #ccc;
+}
+
+form button{
+padding:12px;
+background:#6c63ff;
+color:white;
+border:none;
+border-radius:6px;
+font-weight:bold;
+cursor:pointer;
+}
+.star{
+color:red;
+margin-left:4px;
+font-weight:bold;
+}
