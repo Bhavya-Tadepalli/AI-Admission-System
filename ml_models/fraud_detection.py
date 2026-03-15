@@ -8,13 +8,13 @@ def check_duplicate(student_id, database):
 
 def check_mismatch(form_data, ocr_data):
 
-    if form_data["name"] != ocr_data["name"]:
+    if form_data.get("name") != ocr_data.get("name"):
         return True
 
-    if form_data["board_marks"] != ocr_data["board_marks"]:
+    if form_data.get("board_marks") != ocr_data.get("board_marks"):
         return True
 
-    if form_data["hall_ticket"] != ocr_data["hall_ticket"]:
+    if form_data.get("hall_ticket") != ocr_data.get("hall_ticket"):
         return True
 
     return False
@@ -22,7 +22,7 @@ def check_mismatch(form_data, ocr_data):
 
 def fraud_detection(form_data, ocr_data, database):
 
-    if check_duplicate(form_data["student_id"], database):
+    if check_duplicate(form_data.get("student_id"), database):
         return {
             "status": "fraud",
             "reason": "Duplicate application"

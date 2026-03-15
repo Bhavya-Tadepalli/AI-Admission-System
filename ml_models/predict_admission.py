@@ -1,18 +1,31 @@
 import joblib
 import pandas as pd
 
-# load trained model
-model = joblib.load("ml_models/admission_model.pkl")
+model = joblib.load("admission_model.pkl")
 
-def predict_admission(student_data):
+# features used while training
+MODEL_FEATURES = [
+    "age",
+    "gender",
+    "category",
+    "preferred_stream",
+    "entrance_exam",
+    "entrance_score",
+    "board_percentage",
+    "extracurricular_score",
+    "admission_probability",
+    "scholarship_eligibility"
+]
 
-    df = pd.DataFrame([student_data])
+
+def predict_admission(student):
+
+    # keep only model features
+    filtered_data = {k: student[k] for k in MODEL_FEATURES if k in student}
+
+    df = pd.DataFrame([filtered_data])
 
     prediction = model.predict(df)[0]
-
     probability = model.predict_proba(df)[0][1]
 
-    return {
-        "prediction": int(prediction),
-        "probability": float(probability)
-    }
+    return prediction, probability
