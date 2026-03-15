@@ -1,41 +1,167 @@
-import { Link } from "react-router-dom";
+import React from "react";
+import { useNavigate, Link } from "react-router-dom";
+import Chatbot from "../components/Chatbot";
+import "./home.css";
 
 function Home() {
+
+  const navigate = useNavigate();
+
   return (
-    <div className="min-h-screen bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 flex flex-col items-center justify-center text-white">
 
-      <h1 className="text-5xl font-bold mb-6 drop-shadow-lg">
-        AI Admissions System
-      </h1>
+    <div className="home-container">
 
-      <p className="text-lg mb-10 text-center max-w-xl">
-        Welcome to the AI-Enabled Admissions Processing and Enrollment Management Portal.
-        Apply, track your admission status, and interact with our intelligent system.
-      </p>
+      {/* Navbar */}
 
-      <div className="flex gap-6">
+      <div className="navbar">
 
-        <Link to="/login">
-          <button className="px-6 py-3 bg-white text-indigo-600 font-semibold rounded-lg shadow-lg hover:bg-indigo-600 hover:text-white transition duration-300">
-            Login
-          </button>
-        </Link>
+        <h2 className="logo">AI Admissions Portal</h2>
 
-        <Link to="/apply">
-          <button className="px-6 py-3 bg-yellow-400 text-black font-semibold rounded-lg shadow-lg hover:bg-yellow-500 transition duration-300">
-            Apply Now
-          </button>
-        </Link>
-
-        <Link to="/dashboard">
-          <button className="px-6 py-3 bg-green-400 text-black font-semibold rounded-lg shadow-lg hover:bg-green-500 transition duration-300">
-            Dashboard
-          </button>
-        </Link>
+        <div className="nav-links">
+          <Link to="/">Home</Link>
+          <Link to="/login">Login</Link>
+          <Link to="/apply">Apply</Link>
+        </div>
 
       </div>
 
+
+      {/* Hero Section */}
+
+      <div className="hero">
+
+        <div className="hero-text">
+
+          <h1>Welcome to AI-Enabled Admissions System</h1>
+
+          <p>
+            Find the best college based on your marks and entrance exams
+          </p>
+
+          <button onClick={() => navigate("/login")} className="hero-btn">
+            Apply Now
+          </button>
+
+        </div>
+
+
+        <div className="hero-image">
+
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/1048/1048953.png"
+            alt="books"
+          />
+
+        </div>
+
+      </div>
+
+
+      {/* How it Works */}
+
+      <div className="how-section">
+
+        <h2>How It Works</h2>
+
+        <div className="steps">
+
+          <div className="step">
+
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/2232/2232688.png"
+              alt="form"
+              className="step-img"
+            />
+
+            <h3>Step 1</h3>
+            <p>Fill Application Form</p>
+
+          </div>
+
+
+          <div className="step">
+
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png"
+              alt="exam"
+              className="step-img"
+            />
+
+            <h3>Step 2</h3>
+            <p>Enter Marks & Entrance Exam Details</p>
+
+          </div>
+
+
+          <div className="step">
+
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/3135/3135789.png"
+              alt="college"
+              className="step-img"
+            />
+
+            <h3>Step 3</h3>
+            <p>Get College Recommendations</p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      {/* Courses */}
+
+      <div className="courses">
+
+        <h2>Popular Courses</h2>
+
+        <div className="course-list">
+
+          <div className="course">
+            <img src="https://cdn-icons-png.flaticon.com/512/2721/2721297.png" alt="btech"/>
+            <p>B.Tech</p>
+          </div>
+
+          <div className="course">
+            <img src="https://cdn-icons-png.flaticon.com/512/1048/1048953.png" alt="bsc"/>
+            <p>B.Sc</p>
+          </div>
+
+          <div className="course">
+            <img src="https://cdn-icons-png.flaticon.com/512/3062/3062634.png" alt="bcom"/>
+            <p>B.Com</p>
+          </div>
+
+          <div className="course">
+            <img src="https://cdn-icons-png.flaticon.com/512/4149/4149676.png" alt="bba"/>
+            <p>BBA</p>
+          </div>
+
+          <div className="course">
+            <img src="https://cdn-icons-png.flaticon.com/512/2784/2784487.png" alt="ba"/>
+            <p>BA</p>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      {/* Footer */}
+
+      <div className="footer">
+        <p>© 2026 AI Admissions Portal</p>
+      </div>
+
+
+      {/* Chatbot */}
+
+      <Chatbot />
+
     </div>
+
   );
 }
 

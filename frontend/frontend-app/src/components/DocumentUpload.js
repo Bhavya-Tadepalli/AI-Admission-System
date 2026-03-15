@@ -1,39 +1,75 @@
-function DocumentUpload(){
+import { useState } from "react";
+import "./upload.css";
 
-return(
+function DocumentUpload() {
 
-<div className="p-10">
+const [tenthFile, setTenthFile] = useState(null);
+const [twelfthFile, setTwelfthFile] = useState(null);
+const [tcFile, setTcFile] = useState(null);
 
-<h2 className="text-3xl font-bold text-indigo-600 mb-6">
-Upload Documents
-</h2>
+const handleUpload = (e) => {
+e.preventDefault();
 
-<div className="space-y-4">
+console.log("10th Marksheet:", tenthFile);
+console.log("12th Marksheet:", twelfthFile);
+console.log("Transfer Certificate:", tcFile);
 
-<div>
+alert("Documents uploaded successfully!");
+};
+
+return (
+
+<div className="upload-container">
+
+<form onSubmit={handleUpload} className="upload-box">
+
+<h2>Upload Documents</h2>
+
+<div className="upload-field">
+
 <label>Upload 10th Marksheet</label>
-<input type="file" className="border p-2 w-full"/>
+
+<input
+type="file"
+accept=".pdf,.png,.jpg"
+onChange={(e)=>setTenthFile(e.target.files[0])}
+/>
+
 </div>
 
-<div>
+<div className="upload-field">
+
 <label>Upload 12th Marksheet</label>
-<input type="file" className="border p-2 w-full"/>
+
+<input
+type="file"
+accept=".pdf,.png,.jpg"
+onChange={(e)=>setTwelfthFile(e.target.files[0])}
+/>
+
 </div>
 
-<div>
+<div className="upload-field">
+
 <label>Upload Transfer Certificate</label>
-<input type="file" className="border p-2 w-full"/>
+
+<input
+type="file"
+accept=".pdf,.png,.jpg"
+onChange={(e)=>setTcFile(e.target.files[0])}
+/>
+
 </div>
 
-<button className="bg-green-500 text-white p-3 rounded hover:bg-green-600">
+<button className="upload-btn">
 Upload Documents
 </button>
 
-</div>
+</form>
 
 </div>
 
-)
+);
 
 }
 

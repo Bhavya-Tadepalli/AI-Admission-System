@@ -1,0 +1,78 @@
+body{
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+/* Main Container */
+
+.signup-container{
+display:flex;
+height:100vh;
+background:#ffd6e7;   /* pale pink background */
+}
+
+/* Left Image Section */
+
+.signup-image{
+flex:1;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+background:#ffc0cb;
+color:white;
+text-align:center;
+}
+
+.signup-image img{
+width:200px;
+margin-bottom:20px;
+}
+
+/* Form Section */
+
+.signup-form{
+flex:1;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+background:white;
+}
+
+.signup-form h1{
+margin-bottom:20px;
+color:#ff5c8a;
+}
+
+.signup-form form{
+width:300px;
+display:flex;
+flex-direction:column;
+}
+
+.signup-form input{
+padding:12px;
+margin-bottom:15px;
+border:1px solid #ccc;
+border-radius:6px;
+}
+
+.signup-form button{
+padding:12px;
+background:#ff5c8a;
+border:none;
+color:white;
+font-weight:bold;
+border-radius:6px;
+cursor:pointer;
+}
+
+.signup-form button:hover{
+background:#ff3f76;
+}
+
+.login-link{
+margin-top:10px;
+color:#777;
+}
