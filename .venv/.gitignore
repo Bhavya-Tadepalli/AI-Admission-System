@@ -1,0 +1,11 @@
+
+
+# Virtual environments
+.venv
+
+
+# ML model files
+*.pkl
+*.joblib
+
+

@@ -1,0 +1,11 @@
+Model: Admission Prediction Model
+
+Features Used:
+- age
+- gender
+- category
+- board_percentage
+- entrance_exam_written
+- entrance_score
+- extracurricular_score
+- preferred_stream
