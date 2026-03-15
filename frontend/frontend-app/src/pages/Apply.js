@@ -1,14 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./apply.css";
 
 function Apply() {
 
   const [showForm, setShowForm] = useState(false);
   const [showExam, setShowExam] = useState(false);
+  const [applicationSubmitted, setApplicationSubmitted] = useState(false);
 
   const [mains, setMains] = useState("no");
   const [eamcet, setEamcet] = useState("no");
   const [vsat, setVsat] = useState("no");
+
+  useEffect(() => {
+
+    const existingApplication = localStorage.getItem("studentApplication");
+
+    if(existingApplication){
+      setApplicationSubmitted(true);
+    }
+
+  }, []);
 
   const handleStart = () => {
     setShowForm(true);
@@ -21,20 +32,59 @@ function Apply() {
   };
 
   const handleFinalSubmit = (e) => {
+
     e.preventDefault();
+
+    const applicationData = {
+      applied:true,
+      date:new Date().toLocaleString()
+    };
+
+    localStorage.setItem("studentApplication", JSON.stringify(applicationData));
+
+    setApplicationSubmitted(true);
+
     alert("Application Submitted Successfully!");
+
+  };
+
+  const handleEdit = () => {
+
+    setApplicationSubmitted(false);
+    setShowForm(true);
+
   };
 
   return (
+
     <div className="apply-container">
+
+      {/* Dashboard if already applied */}
+
+      {applicationSubmitted && !showForm && !showExam && (
+
+        <div className="apply-box">
+
+          <h1>Application Submitted</h1>
+
+          <p>You have already applied for admission.</p>
+
+          <button onClick={handleEdit}>
+            Edit Application
+          </button>
+
+        </div>
+
+      )}
 
       {/* Start Page */}
 
-      {!showForm && !showExam && (
+      {!showForm && !showExam && !applicationSubmitted && (
 
         <div className="apply-box">
 
           <h1>Apply Now</h1>
+
           <p>Welcome to the AI Admissions Application Page</p>
 
           <button onClick={handleStart}>
@@ -55,51 +105,31 @@ function Apply() {
 
           <form onSubmit={handleSubmit}>
 
-            <label>Student Name <span className="star">*</span></label>
-            <input
-              type="text"
-              pattern="[A-Za-z ]{3,}"
-              required
-            />
+            <label>Student Name *</label>
+            <input type="text" required />
 
-            <label>Email <span className="star">*</span></label>
+            <label>Email *</label>
             <input type="email" required />
 
-            <label>Phone Number <span className="star">*</span></label>
-            <input
-              type="tel"
-              pattern="[0-9]{10}"
-              required
-            />
+            <label>Phone *</label>
+            <input type="tel" required />
 
-            <label>Address <span className="star">*</span></label>
+            <label>Address *</label>
             <textarea required></textarea>
 
-            {/* 10th Marks */}
+            <label>10th Marks *</label>
+            <input type="number" required />
 
-            <label>10th Marks <span className="star">*</span></label>
-            <input
-              type="number"
-              required
-            />
-
-            <label>Upload 10th Marksheet <span className="star">*</span></label>
+            <label>Upload 10th Marksheet *</label>
             <input type="file" required />
 
-            {/* 12th Marks */}
+            <label>12th Marks *</label>
+            <input type="number" required />
 
-            <label>12th Marks <span className="star">*</span></label>
-            <input
-              type="number"
-              required
-            />
-
-            <label>Upload 12th Marksheet <span className="star">*</span></label>
+            <label>Upload 12th Marksheet *</label>
             <input type="file" required />
 
-            {/* Course */}
-
-            <label>Preferred Course <span className="star">*</span></label>
+            <label>Preferred Course *</label>
 
             <select required>
 
@@ -112,7 +142,7 @@ function Apply() {
 
             </select>
 
-            <label>Preferred College <span className="star">*</span></label>
+            <label>Preferred College *</label>
             <input type="text" required />
 
             <button type="submit">
@@ -125,7 +155,7 @@ function Apply() {
 
       )}
 
-      {/* Entrance Exam Section */}
+      {/* Entrance Exams */}
 
       {showExam && (
 
@@ -134,8 +164,6 @@ function Apply() {
           <h2>Entrance Exam Details (Optional)</h2>
 
           <form onSubmit={handleFinalSubmit}>
-
-            {/* JEE */}
 
             <label>Have you written JEE Mains?</label>
 
@@ -147,6 +175,7 @@ function Apply() {
             </select>
 
             {mains === "yes" && (
+
               <>
                 <label>JEE Marks</label>
                 <input type="number" />
@@ -154,9 +183,8 @@ function Apply() {
                 <label>Upload JEE Scorecard</label>
                 <input type="file" />
               </>
-            )}
 
-            {/* EAMCET */}
+            )}
 
             <label>Have you written EAMCET?</label>
 
@@ -168,6 +196,7 @@ function Apply() {
             </select>
 
             {eamcet === "yes" && (
+
               <>
                 <label>EAMCET Marks</label>
                 <input type="number" />
@@ -175,9 +204,8 @@ function Apply() {
                 <label>Upload EAMCET Scorecard</label>
                 <input type="file" />
               </>
-            )}
 
-            {/* VSAT */}
+            )}
 
             <label>Have you written VSAT?</label>
 
@@ -189,6 +217,7 @@ function Apply() {
             </select>
 
             {vsat === "yes" && (
+
               <>
                 <label>VSAT Marks</label>
                 <input type="number" />
@@ -196,6 +225,7 @@ function Apply() {
                 <label>Upload VSAT Scorecard</label>
                 <input type="file" />
               </>
+
             )}
 
             <button type="submit">
@@ -209,7 +239,9 @@ function Apply() {
       )}
 
     </div>
+
   );
+
 }
 
 export default Apply;

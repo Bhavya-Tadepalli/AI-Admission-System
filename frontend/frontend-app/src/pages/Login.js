@@ -8,10 +8,23 @@ function Login() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    navigate("/apply");
+
+    // check if student already applied
+    const application = localStorage.getItem("studentApplication");
+
+    if(application){
+      // already applied
+      navigate("/apply");
+    }
+    else{
+      // new student
+      navigate("/apply");
+    }
+
   };
 
   return (
+
     <div className="container">
 
       <div className="login-box">
@@ -32,12 +45,14 @@ function Login() {
             required
           />
 
-          <button type="submit">Login</button>
+          <button type="submit">
+            Login
+          </button>
 
         </form>
 
         <p>
-          Don't have an account? 
+          Don't have an account?
           <Link to="/signup" className="signup"> Sign Up</Link>
         </p>
 
@@ -46,6 +61,7 @@ function Login() {
       </div>
 
     </div>
+
   );
 }
 
